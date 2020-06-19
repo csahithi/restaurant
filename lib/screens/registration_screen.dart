@@ -3,6 +3,7 @@ import 'package:restaurant/components/rounded_button.dart';
 import 'package:restaurant/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:restaurant/services/user.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
@@ -74,7 +75,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   try {
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
-                    if (newUser != null) {}
+                    if (newUser != null) {
+                      User().storeNewUser(newUser.user, context);
+                    }
 
                     setState(() {
                       showSpinner = false;

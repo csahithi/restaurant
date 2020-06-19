@@ -1,9 +1,9 @@
-import 'package:restaurant/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant/components/rounded_button.dart';
 import 'package:restaurant/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:restaurant/screens/payment_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -75,8 +75,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   try {
                     final user = await _auth.signInWithEmailAndPassword(
                         email: email, password: password);
-                    if (user != null) {}
-
+                    if (user != null) {
+                      Navigator.of(context).pop();
+                      Navigator.of(context)
+                          .pushReplacementNamed(PaymentScreen.id);
+                    }
                     setState(() {
                       showSpinner = false;
                     });

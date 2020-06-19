@@ -21,7 +21,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     super.initState();
 
     controller =
-        AnimationController(duration: Duration(seconds: 1), vsync: this);
+        AnimationController(duration: Duration(seconds: 3), vsync: this);
     animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
         .animate(controller);
     controller.forward();
@@ -71,14 +71,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               title: 'Log In',
               colour: Colors.pink.shade500,
               onPressed: () {
-                Navigator.pushNamed(context, LoginScreen.id);
+                Navigator.of(context).pushNamed(LoginScreen.id);
               },
             ),
             RoundedButton(
               title: 'Register',
               colour: Colors.pink.shade800,
               onPressed: () {
-                Navigator.pushNamed(context, RegistrationScreen.id);
+                Navigator.of(context).pushNamed(RegistrationScreen.id);
               },
             ),
           ],
